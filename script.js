@@ -264,6 +264,17 @@ form.addEventListener('submit', async (e) => {
         });
 });
 
+/* ==================== BACK TO TOP ==================== */
+const backToTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 /* ==================== SMOOTH SCROLL ==================== */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
