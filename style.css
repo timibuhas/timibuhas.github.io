@@ -467,6 +467,14 @@ button { font-family: var(--font-body); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes ytPop {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(1.4) rotate(-8deg); }
+    60%  { transform: scale(0.9) rotate(4deg); }
+    80%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
 .reveal {
     opacity: 0;
     transform: translateY(44px);
@@ -1024,10 +1032,25 @@ button { font-family: var(--font-body); }
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-secondary);
-    transition: var(--transition);
+    padding: 6px 13px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 0 var(--accent);
+    transition: color 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-github-btn:hover { color: var(--accent); }
+.project-github-btn:hover {
+    color: #fff;
+    box-shadow: inset 0 0 0 40px var(--accent);
+    border-color: var(--accent);
+}
+
+.project-github-btn i {
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-github-btn:hover i { transform: rotate(360deg); }
 
 .project-demo-btn {
     display: inline-flex;
@@ -1036,10 +1059,26 @@ button { font-family: var(--font-body); }
     font-size: 0.88rem;
     font-weight: 600;
     color: var(--accent);
-    transition: var(--transition);
+    padding: 6px 2px;
+    position: relative;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-demo-btn:hover { gap: 9px; }
+.project-demo-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #FF0000;
+    border-radius: 2px;
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-demo-btn:hover { color: #e00; }
+.project-demo-btn:hover::after { width: 100%; }
+.project-demo-btn:hover i { animation: ytPop 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
 /* ==================== EXPERIENCE ==================== */
 .experience { background: var(--bg-primary); }
