@@ -507,7 +507,7 @@ button { font-family: var(--font-body); }
 
 .image-placeholder {
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 0.9;
     border-radius: var(--radius-lg);
     background: var(--bg-card);
     display: flex;
